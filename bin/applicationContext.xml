@@ -8,13 +8,7 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 <!-- Define Beans -->
-<bean id="myMoney" class="com.udemy.application.onWhat">
-</bean>
-<bean id="myHero" class="com.udemy.application.IronMan">
-<constructor-arg ref="myMoney"></constructor-arg>
-</bean>
-<!--Use setter dependency injection  -->
-<bean id ="myVillain" class = "com.udemy.application.Ultron">
-<property name="money" ref="myMoney"></property>
-</bean>
+
+<context:component-scan base-package="com.udemy.application"></context:component-scan>
+
 </beans>

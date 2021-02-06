@@ -8,8 +8,11 @@ public class MainClass {
 		// TODO Auto-generated method stub
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Superhero hero = context.getBean("myHero", Superhero.class);
-		System.out.println(hero.doAction());
-		System.out.println(hero.useMoney());
+		Superhero villain = context.getBean("myVillain",Superhero.class);
+		
+		System.out.println(villain.doAction());
+		System.out.println(villain.useMoney());
+		
 		context.close();
 	}
 

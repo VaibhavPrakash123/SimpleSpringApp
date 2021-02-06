@@ -1,15 +1,12 @@
 package com.udemy.application;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("myVillain")
 public class Ultron implements Superhero {
 
-	private Money money;
-	 
-	//no-args constructor
-	public Ultron() {System.out.println("Ultron Created - Creator : Tony Stark");}
-	public void setMoney(Money money) {
-		this.money = money;
-		System.out.println("Inside setter dependency injection");
-	}
+	private Money m1;
 
 	@Override
 	public String doAction() {
@@ -17,11 +14,16 @@ public class Ultron implements Superhero {
 		
 		return "Drop Asteroid on Earth";
 	}
-
+	@Autowired
+	public Ultron(Money money)
+	{
+		m1 = money;
+	}
 	@Override
 	public String useMoney() {
 		// TODO Auto-generated method stub
-		return null;
+		return "I am using Money to "+m1.useMoney();
 	}
 
+	
 }

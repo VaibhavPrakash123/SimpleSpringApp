@@ -1,7 +1,10 @@
 package com.udemy.application;
 
+import org.springframework.stereotype.Component;
+
+@Component("myHero")
 public class IronMan implements Superhero {
-	private onWhat what1;
+	
 
 	@Override
 	public String doAction() {
@@ -9,14 +12,10 @@ public class IronMan implements Superhero {
 		return "Fire Missiles at Enemy";
 	}
 
-	public IronMan(onWhat what1) {
-		super();
-		this.what1 = what1;
+	@Override
+	public String useMoney() {
+		// TODO Auto-generated method stub
+		return "Money to do Stark Expo";
 	}
 
-	@Override
-	public String useMoney()
-	{
-		return what1.useMoney();
 	}
-}
