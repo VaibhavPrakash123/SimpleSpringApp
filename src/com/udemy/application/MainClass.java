@@ -9,10 +9,11 @@ public class MainClass {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		Superhero hero = context.getBean("myHero", Superhero.class);
 		Superhero villain = context.getBean("myVillain",Superhero.class);
-		
-		System.out.println(villain.doAction());
-		System.out.println(villain.useMoney());
-		
+//		
+//		System.out.println(villain.doAction());
+//		System.out.println(villain.useMoney());
+		System.out.println("I Call "+hero.callAllies());
+		System.out.println("I call "+villain.callAllies()+" to compete");
 		context.close();
 	}
 
