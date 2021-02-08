@@ -8,32 +8,64 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Villains implements Allies {
-	List<String> villain = new ArrayList<String>();
-	private Random random = new Random();
+public class Villains implements Fighters {
+	// Read text file containing Villain Names
+	File villain = new File("D:/SpringProjectsWorkspace/SpringApp/src/com/udemy/application/villain.txt");
+	// List to add Villains
+	List<String> villains;
+	BufferedReader br;
+
+	// Generate random numbers
+
+	// Inject dependencies
+	@Autowired
+
+	PowerImplementation pwr;
+
+	// noargs constructor
+	public Villains() {
+		System.out.println("Villain Gene Inherited, villain Created");
+	}
+
+	public Villains(PowerImplementation pwr) {
+		this.pwr = pwr;
+	}
+	// Injecting Dependencies
+
 	@Override
-	public String getAllies() {
+	public int powerInput() {
 		// TODO Auto-generated method stub
-		BufferedReader br;
-		File file1 = new File("D:/SpringProjectsWorkspace/SpringApp/src/com/udemy/application/Villain.txt");
+
+		return pwr.producePower();
+	}
+
+	@Override
+	public String chooseFighter() {
+		// TODO Auto-generated method stub
+		villains = new ArrayList<String>();
+
 		try {
-			br = new BufferedReader(new FileReader(file1));
+			br = new BufferedReader(new FileReader(villain));
 			String content = br.readLine();
 			while (content != null) {
 				content = br.readLine();
-				villain.add(content);
-
+				villains.add(content);
 			}
-			
-		} catch (IOException ie) {
-			ie.printStackTrace();
+			Random myRandom = new Random();
+			int index = myRandom.nextInt(villains.size() - 1);
+			String fighter = villains.get(index);
+			return (fighter);
 		}
 
-		int index = random.nextInt(villain.size()-1);
-		return villain.get(index);
-		
+		catch (IOException ie) {
+			ie.printStackTrace();
+		}
+		return null;
 	}
+
 }
